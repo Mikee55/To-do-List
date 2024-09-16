@@ -1,0 +1,98 @@
+body {
+    margin: 0;
+}
+.main-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+.nav {
+    background-color: rgb(78, 78, 78);
+    height: 40px;
+}
+
+.title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    background-color: rgb(0, 226, 170);
+    margin: 25px;
+    padding: 7px 130px;
+    border-radius: 10px;
+    color: azure;
+}
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+}
+.form input {
+    width: 70%;
+    padding: 10px 10px;
+    border-radius: 10px;
+    opacity: 0.5;
+}
+#button {
+    width: 20%;
+    padding: 10px 10px;
+    border-radius: 10px;
+    background-color: rgb(50, 125, 196);
+    border: none;
+    color: azure;
+    font-family: sans-serif;
+    cursor: pointer;
+}
+.task-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#task-list {
+    display: flex;
+    justify-content:space-evenly;
+    flex-direction: column;
+    font-family: sans-serif;
+    text-decoration: none;
+    width: 40%;
+    list-style-type: disc;
+}
+#task-list li {
+    display: flex;
+    margin: 20PX;
+    /* padding: 5px; */
+}
+#task-list li::before{
+    content: "";
+    border-radius: 50%;
+    width: 5px;
+    height: 5px;
+    margin-top: 7px;
+    margin: 5px;
+    background: #000;
+}
+#task-list input[type="checkbox"] {
+    margin-left: auto;
+}
+#task-list button {
+    cursor: pointer;
+    margin: 5px;
+}
+.footer {
+    background-color: rgb(99, 99, 99);
+    height: 40px;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+}
