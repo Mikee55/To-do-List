@@ -4,6 +4,10 @@ const taskList = document.getElementById('task-list');
 
 button.addEventListener('click', function (e) {
     e.preventDefault();
+
+    if () {
+        
+    }
     
     const newListItem = document.createElement('li');
     const checkBox = document.createElement('input');
