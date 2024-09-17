@@ -12,13 +12,15 @@ button.addEventListener('click', function (e) {
     removeButton.textContent = 'Remove';  
     checkBox.type = 'checkbox';
     
-    if (taskText === "") {
-        
-    }
+    if (taskText == "") {
+        taskInput.placeholder = "Please enter task here";
+    } else {
     newListItem.append(taskText);
     newListItem.append(checkBox);
     newListItem.append(removeButton);
-    taskList.append(newListItem);  
+    taskList.append(newListItem);
+    taskInput.value = "";
+    }
 
     
     // const remButton = document.querySelector('button');
