@@ -1,9 +1,10 @@
-let num = 0;
+const http = require('http');
 
-let timer = setInterval(function(){
-    num +=3;
-    console.log(num);
-    if (num > 10) {
-        clearInterval(timer);
-    }
-}, 2000);
+const server = http.createServer((req, res) => {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('Hello from EaseUp');
+});
+
+server.listen(3000, () => {
+    console.log('Server listening on port 3000');
+});
