@@ -1,10 +1,14 @@
-const http = require('http');
+const express = require('express');
 
-const server = http.createServer((req, res) => {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('Hello from EaseUp, welcome! How can we assist?');
-});
+const app = express();
 
-server.listen(3000, () => {
-    console.log('Server listening on port 3000');
+app.use(express.static(__dirname + '/public'));
+app.get('/', (req,res)=>{
+    console.log('Home Page');
+    res.sendFile(__dirname + '/todo.html');
+})
+
+const port = 3000;
+app.listen(port, () => {
+    console.log(`Server is listening on port ${port}...`);
 });
