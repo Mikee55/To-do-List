@@ -17,17 +17,19 @@
         </div>
         
         <div class="form-container">
-            <form action="" method="post" class="form">
-                <input type="text" placeholder="Task name" id="taskInput">
+            <form action="/add-todo" method="post" class="form">
+                <input type="text" name="todo" placeholder="Task name" id="taskInput">
                 <button id="button">
                     <p class="add">ADD</p>
                 </button>
             </form>
         </div>
         <div class="task-container">
-            <ol id="task-list">
-
-            </ol>
+            <ul>
+                <% for (let todo of todos) { %>
+                    <li><%= todo.item %></li>
+                <% } %>
+            </ul>
         </div>
         <footer class="footer">
             <h1></h1>
