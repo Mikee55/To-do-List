@@ -1,31 +1,20 @@
-const taskInput = document.getElementById('taskInput');
-const button = document.getElementById('button');
-const taskList = document.getElementById('task-list');
+$(document).ready(function() {
+    $('#button').click(function() {
+        
+        var item = $('form input')
+        var todo = {item: item.val()};
 
-button.addEventListener('click', function (e) {
-    e.preventDefault();
-
-    const taskText = taskInput.value;
-    const newListItem = document.createElement('li');
-    const checkBox = document.createElement('input');
-    const removeButton = document.createElement('button');
-    removeButton.textContent = 'Remove';  
-    checkBox.type = 'checkbox';
-    
-    if (taskText == "") {
-        taskInput.placeholder = "Please enter task here";
-    } else {
-    newListItem.append(taskText);
-    newListItem.append(checkBox);
-    newListItem.append(removeButton);
-    taskList.append(newListItem);
-    taskInput.value = "";
-    }
-
-    
-    // const remButton = document.querySelector('button');
-    removeButton.addEventListener('click', function (e) {
-        e.preventDefault();
-        taskList.removeChild(newListItem);
+        $.ajax({
+            type: 'POST',
+            url: '/add-todo',
+            data: todo,
+            success: function(data) {
+                location.reload();
+            }
+        })
     })
 });
+
+
+
+ 
