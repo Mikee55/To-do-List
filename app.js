@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const ejs = require('ejs');
 const app = express();
 
+const dbURI = 'mongodb+srv://Mike:0941104990@MIKe@cluster0.5jrjl.mongodb.net/';
+
 app.set('view engine', 'ejs');
 
 app.use(express.static(__dirname + '/public'));
