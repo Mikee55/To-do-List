@@ -11,14 +11,24 @@ var urlencodedParser = bodyParser.urlencoded({extended: false})
 
 var data = [{item: 'Mike'}, {item: 'SE'}, {item: '30'}];
 
-app.get('/', (req,res)=>{
+
+app.get('/todo', (req,res)=>{
     console.log('Home Page');
     res.render('todo', { todos: data });
 })
-app.post('/add-todo', urlencodedParser,(req,res) => {
+app.post('/todo', urlencodedParser,(req,res) => {
     data.push(req.body);
-    res.render('todo', { todos: data });
+    res.json(data);
 });
+
+app.delete('/todo/:item', (req,res) =>{
+    console.log('Task deleted');
+    data = data.filter(function(todo) {
+        return todo.item.replace(/ /g, '-') !== req.params.item;
+    });
+    res.json(data);
+
+})
 
 
 
