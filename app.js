@@ -1,15 +1,53 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const ejs = require('ejs');
+const mongoose = require('mongoose');
+
 const app = express();
 
-const dbURI = 'mongodb+srv://Mike:0941104990@MIKe@cluster0.5jrjl.mongodb.net/';
+const dbURI = 'mongodb+srv://milkyas:684762@cluster0.5jrjl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+
+// mongosse.connect(dbURI);
+
+// var todoSchema = new mongosse.Schema({
+
+//     item: String
+// });
+
+// var Todo = mongosse.model('Todo', todoSchema);
+// var itemOne = Todo({item: 'enjoy coding'}).save(function(err) {
+//     if (err) throw err;
+//     console.log('item saved');
+// });
+
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+        console.log('MongoDB connected successfully.')})
+    .catch(err => {
+        console.error('Error connecting to MongoDB:', err)});
+
+// Define a schema for the Todo document
+const todoSchema = new mongoose.Schema({
+    item: String
+});
+
+// Create a Mongoose model based on the schema
+const Todo = mongoose.model('Todo', todoSchema);
+
+// Create a new Todo document
+const newTodo = new Todo({ item: 'enjoy coding' });
+
+// Save the new Todo document to the database
+newTodo.save()
+    .then(() => console.log('Todo item "enjoy coding" saved successfully.'))
+    .catch(err => console.error('Error saving Todo:', err));
+
 
 app.set('view engine', 'ejs');
 
 app.use(express.static(__dirname + '/public'));
 
-var urlencodedParser = bodyParser.urlencoded({extended: false})
+var urlencodedParser = bodyParser.urlencoded({extended: false});
 
 var data = [{item: 'Mike'}, {item: 'SE'}, {item: '30'}];
 
