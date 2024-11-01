@@ -7,6 +7,8 @@ const app = express();
 
 const dbURI = 'mongodb+srv://milkyas:684762@cluster0.5jrjl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
+const mongodbUri = process.env.MONGODB_URI;
+
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
