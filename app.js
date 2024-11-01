@@ -7,18 +7,6 @@ const app = express();
 
 const dbURI = 'mongodb+srv://milkyas:684762@cluster0.5jrjl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
-// mongosse.connect(dbURI);
-
-// var todoSchema = new mongosse.Schema({
-
-//     item: String
-// });
-
-// var Todo = mongosse.model('Todo', todoSchema);
-// var itemOne = Todo({item: 'enjoy coding'}).save(function(err) {
-//     if (err) throw err;
-//     console.log('item saved');
-// });
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
@@ -31,17 +19,7 @@ const todoSchema = new mongoose.Schema({
     item: String
 });
 
-
 const Todo = mongoose.model('Todo', todoSchema);
-
-
-const newTodo = new Todo({ item: 'enjoy coding' });
-
-
-newTodo.save()
-    .then(() => console.log('Todo item "enjoy coding" saved successfully.'))
-    .catch(err => console.error('Error saving Todo:', err));
-
 
 app.set('view engine', 'ejs');
 
@@ -49,26 +27,48 @@ app.use(express.static(__dirname + '/public'));
 
 var urlencodedParser = bodyParser.urlencoded({extended: false});
 
-var data = [{item: 'Mike'}, {item: 'SE'}, {item: '30'}];
+// var data = [{item: 'Mike'}, {item: 'SE'}, {item: '30'}];
+
+// Todo.find({}, function(err, data) {
+//     if (err) throw err;
+//     res.render('todo', { todos: data });
+// })
+// data.push(req.body);
+//     res.json(data);
 
 
-app.get('/todo', (req,res)=>{
-    console.log('Home Page');
-    res.render('todo', { todos: data });
-})
-app.post('/todo', urlencodedParser,(req,res) => {
-    data.push(req.body);
-    res.json(data);
+app.get('/todo', async (req,res) => {
+    try {
+        const todos = await Todo.find({});
+        res.render('todo', { todos });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Internal Server Error');
+    }
+});
+app.post('/todo', urlencodedParser, async (req,res) => {
+    try {
+        const newTodo = await Todo(req.body).save();
+        res.json(newTodo);
+    }
+    catch (err) {
+        console.error(err);
+        res.status(500).send('Internal Server Error');
+    }
+    
 });
 
-app.delete('/todo/:item', (req,res) =>{
-    console.log('Task deleted');
-    data = data.filter(function(todo) {
-        return todo.item.replace(/ /g, '-') !== req.params.item;
-    });
-    res.json(data);
+app.delete('/todo/:id', async (req,res) =>{
+    try {
+        const todoItem = req.params.id;
+        const deletedTodo = await Todo.findByIdAndDelete(todoItem);
+        res.json(deletedTodo);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Internal Server Error');
+    }
 
-})
+});
 
 
 

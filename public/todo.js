@@ -4,24 +4,28 @@ $(document).ready(function() {
         var item = $('form input');
         var todo = {item: item.val()};
 
-        $.ajax({
-            type: 'POST',
-            url: '/todo',
-            data: todo,
-            success: function(data) {
-                location.reload();
-            }
-        });
-
+        if ($('form input').val() === "") {
+            $('form input').attr('placeholder', "Please add text here");
+        } else {
+            $.ajax({
+                type: 'POST',
+                url: '/todo',
+                data: todo,
+                success: function(data) {
+                    location.reload();
+                }
+            });
+        }
+        
         return false;
     });
 
     $('li').on('click', function() {
-        var item = $(this).text().replace(/ /g, "-");
+        var todoID = $(this).data('id');
 
         $.ajax({
             type: 'DELETE',
-            url: '/todo/' + item,
+            url: '/todo/' + todoID,
             success: function(data) {
                 location.reload();
             }

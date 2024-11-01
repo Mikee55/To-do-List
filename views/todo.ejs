@@ -28,7 +28,7 @@
         <div class="task-container">
             <ul id="todoList">
                 <% for (let todo of todos) { %>
-                    <li><%= todo.item %></li>
+                    <li data-id="<%= todo._id %>"><%= todo.item %> <button class="clear">clear</button></li>
                 <% } %>
             </ul>
         </div>

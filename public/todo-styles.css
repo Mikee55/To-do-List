@@ -89,6 +89,14 @@ body {
     cursor: pointer;
     margin: 5px;
 }
+#todoList {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.clear {
+    margin-left: auto;
+}
 .footer {
     background-color: rgb(99, 99, 99);
     height: 40px;
