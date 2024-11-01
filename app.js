@@ -26,18 +26,18 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .catch(err => {
         console.error('Error connecting to MongoDB:', err)});
 
-// Define a schema for the Todo document
+
 const todoSchema = new mongoose.Schema({
     item: String
 });
 
-// Create a Mongoose model based on the schema
+
 const Todo = mongoose.model('Todo', todoSchema);
 
-// Create a new Todo document
+
 const newTodo = new Todo({ item: 'enjoy coding' });
 
-// Save the new Todo document to the database
+
 newTodo.save()
     .then(() => console.log('Todo item "enjoy coding" saved successfully.'))
     .catch(err => console.error('Error saving Todo:', err));
