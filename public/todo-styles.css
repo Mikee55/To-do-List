@@ -73,15 +73,6 @@ body {
     margin: 20PX;
     /* padding: 5px; */
 }
-#task-list li::before{
-    content: "";
-    border-radius: 50%;
-    width: 5px;
-    height: 5px;
-    margin-top: 7px;
-    margin: 5px;
-    background: #000;
-}
 #task-list input[type="checkbox"] {
     margin-left: auto;
 }
@@ -89,13 +80,39 @@ body {
     cursor: pointer;
     margin: 5px;
 }
+.invalid {
+    border-color: red; /* Or any desired color */
+    placeholder: 'Please add text here';
+}
+.invalid::placeholder {
+    color: red;
+}
 #todoList {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#todoList li {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    /* align-items: center; */
+    /* margin-right: auto; */
+    padding: 4px;
 }
+/* #todoList li::before{
+    content: "";
+    border-radius: 50%;
+    width: 5px;
+    height: 5px;
+    margin-top: 7px;
+    margin: 5px;
+    background: #000;
+    margin-right: 0;
+} */
 .clear {
-    margin-left: auto;
+    margin-right: 0;
+    margin-left: 100px;
 }
 .footer {
     background-color: rgb(99, 99, 99);

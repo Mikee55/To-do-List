@@ -5,6 +5,7 @@ $(document).ready(function() {
         var todo = {item: item.val()};
 
         if ($('form input').val() === "") {
+            $('form input').addClass('invalid');
             $('form input').attr('placeholder', "Please add text here");
         } else {
             $.ajax({
