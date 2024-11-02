@@ -39,7 +39,7 @@ var urlencodedParser = bodyParser.urlencoded({extended: false});
 //     res.json(data);
 
 
-app.get('/todo', async (req,res) => {
+app.get('/', async (req,res) => {
     try {
         const todos = await Todo.find({});
         res.render('todo', { todos });
@@ -48,7 +48,7 @@ app.get('/todo', async (req,res) => {
         res.status(500).send('Internal Server Error');
     }
 });
-app.post('/todo', urlencodedParser, async (req,res) => {
+app.post('/', urlencodedParser, async (req,res) => {
     try {
         const newTodo = await Todo(req.body).save();
         res.json(newTodo);
@@ -60,7 +60,7 @@ app.post('/todo', urlencodedParser, async (req,res) => {
     
 });
 
-app.delete('/todo/:id', async (req,res) =>{
+app.delete('/:id', async (req,res) =>{
     try {
         const todoItem = req.params.id;
         const deletedTodo = await Todo.findByIdAndDelete(todoItem);
