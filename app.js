@@ -10,7 +10,7 @@ const dbURI = 'mongodb+srv://milkyas:684762@cluster0.5jrjl.mongodb.net/?retryWri
 const mongodbUri = process.env.MONGODB_URI;
 
 
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(dbURI)
     .then(() => {
         console.log('MongoDB connected successfully.')})
     .catch(err => {
