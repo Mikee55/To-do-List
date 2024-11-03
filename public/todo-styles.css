@@ -54,25 +54,6 @@ body {
     font-family: sans-serif;
     cursor: pointer;
 }
-.task-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-#task-list {
-    display: flex;
-    justify-content:space-evenly;
-    flex-direction: column;
-    font-family: sans-serif;
-    text-decoration: none;
-    width: 40%;
-    list-style-type: disc;
-}
-#task-list li {
-    display: flex;
-    margin: 20PX;
-    /* padding: 5px; */
-}
 #task-list input[type="checkbox"] {
     margin-left: auto;
 }
@@ -81,11 +62,16 @@ body {
     margin: 5px;
 }
 .invalid {
-    border-color: red; /* Or any desired color */
+    border-color: red; 
     placeholder: 'Please add text here';
 }
 .invalid::placeholder {
     color: red;
+}
+.task-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #todoList {
     display: flex;
@@ -94,22 +80,16 @@ body {
 }
 #todoList li {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
-    /* align-items: center; */
-    /* margin-right: auto; */
     padding: 4px;
+    /* max-width: 300px; */
 }
-/* #todoList li::before{
-    content: "";
-    border-radius: 50%;
-    width: 5px;
-    height: 5px;
-    margin-top: 7px;
-    margin: 5px;
-    background: #000;
-    margin-right: 0;
-} */
+.task-text  {
+    max-width: 250px; /* Adjust the width as needed */
+    word-wrap: break-word;
+    white-space: normal;
+    overflow-wrap: break-word;
+}
 .clear {
     margin-right: 0;
     margin-left: 100px;

@@ -29,15 +29,6 @@ app.use(express.static(__dirname + '/public'));
 
 var urlencodedParser = bodyParser.urlencoded({extended: false});
 
-// var data = [{item: 'Mike'}, {item: 'SE'}, {item: '30'}];
-
-// Todo.find({}, function(err, data) {
-//     if (err) throw err;
-//     res.render('todo', { todos: data });
-// })
-// data.push(req.body);
-//     res.json(data);
-
 
 app.get('/', async (req,res) => {
     try {
