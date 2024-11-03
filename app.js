@@ -43,6 +43,7 @@ app.post('/', urlencodedParser, async (req,res) => {
     try {
         const newTodo = await Todo(req.body).save();
         res.json(newTodo);
+        // res.redirect('/');
     }
     catch (err) {
         console.error(err);

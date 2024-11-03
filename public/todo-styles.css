@@ -85,7 +85,7 @@ body {
     /* max-width: 300px; */
 }
 .task-text  {
-    max-width: 250px; /* Adjust the width as needed */
+    max-width: 600px; /* Adjust the width as needed */
     word-wrap: break-word;
     white-space: normal;
     overflow-wrap: break-word;
@@ -93,6 +93,8 @@ body {
 .clear {
     margin-right: 0;
     margin-left: 100px;
+    max-width: 50px;
+    max-height: 50px;
 }
 .footer {
     background-color: rgb(99, 99, 99);
